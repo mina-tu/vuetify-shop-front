@@ -129,7 +129,6 @@ const changeImage = (imageName) => {
 <style scoped>
 .app-container {
   height: 100vh;
-  background: url('@/assets/Noisy Glass Cube@1-1920x1080.png') no-repeat center top fixed;
   background-size: cover;
   display: flex;
   justify-content: center;
