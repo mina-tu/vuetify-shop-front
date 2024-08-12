@@ -14,55 +14,62 @@
       </v-col>
     </v-row>
   </v-container>
-
   <v-container fluid class="pa-0">
+    <!-- 上方圖片 -->
     <v-row no-gutters>
-      <!-- 動態圖片 -->
       <v-img
-        :src="currentImage"
-        height="300"
-        class="white--text align-end"
-        @mouseover="changeImage('serve2.png')"
-        @mouseleave="changeImage('serve1.png')"
+        src="../assets/serve1.png"
+        height="100%"
+        width="100vw"
+        class="d-flex"
       >
-        <v-row justify="center" align="end" class="fill-height pb-0">
-          <v-col cols="auto">
-            <div class="serve">SERVE</div>
-          </v-col>
-        </v-row>
       </v-img>
     </v-row>
 
-    <v-row class="mt-8" justify="center">
-      <v-col cols="12" sm="4" style="padding: 4rem;">
-        <h2 class="text-h3 font-weight-bold">水處理系統</h2>
-        <h3 class="text-h4 font-weight-bold" style="line-height: 2;">規劃設計及施工</h3>
+    <!-- 中間內容 -->
+    <v-row class="mt-4" justify="center">
+      <v-col cols="12" sm="3" style="padding: 2rem;">
+        <div class="text-h4 font-weight-bold">水處理系統</div>
+        <div class="text-h5 font-weight-bold" style="line-height: 2;">規劃設計及施工</div>
       </v-col>
 
-      <v-col cols="12" sm="4" style="padding: 4rem;">
-        <div class="main-business">
-          <h3 class="text-h6 font-weight-bold mb-4">主要業務</h3>
-          <ul class="pl-4 no-bullets">
-            <li>原水處理系統</li>
-            <li>純水及超純水系統</li>
-            <li>特殊廢水回收系統</li>
-            <li>製程液純化系統</li>
-            <li>冷凝水回收系統</li>
-            <li>冷卻水塔旁濾系統</li>
-          </ul>
-        </div>
+      <v-col cols="12" sm="3" style="padding: 2rem; position: relative;">
+        <div class="text-h5 font-weight-bold mb-4">主要業務</div>
+        <ul class="pl-2 no-bullets">
+          <li>原水處理系統</li>
+          <li>純水及超純水系統</li>
+          <li>特殊廢水回收系統</li>
+          <li>製程液純化系統</li>
+          <li>冷凝水回收系統</li>
+          <li>冷卻水塔旁濾系統</li>
+        </ul>
+        <!-- 藍色色塊 -->
+        <div style="background-color: #0000FF;
+         width: 200px; height: 200px;
+         position: absolute;
+         top: -6rem;
+         right: -28rem;"></div>
       </v-col>
 
-      <v-col cols="12" sm="4" style="padding: 4rem;">
-        <div class="main-business">
-          <h3 class="text-h6 font-weight-bold mb-4">次要業務</h3>
-          <ul class="pl-4 no-bullets">
-            <li>機械安裝</li>
-            <li>配管工程</li>
-            <li>水處理耗材及藥劑銷售</li>
-          </ul>
-        </div>
+      <v-col cols="12" sm="3" style="padding: 2rem; position: relative;">
+        <div class="text-h5 font-weight-bold mb-4">次要業務</div>
+        <ul class="pl-2 no-bullets">
+          <li>機械安裝</li>
+          <li>配管工程</li>
+          <li>水處理耗材及藥劑銷售</li>
+        </ul>
+        <!-- 藍色色塊 -->
+        <div style="background-color: #0000FF;
+        width: 250px; height: 250px;
+        position: absolute;
+        top: -12rem;
+        right: -15rem;"></div>
       </v-col>
+    </v-row>
+
+    <!-- 跑馬燈 -->
+    <v-row class="mt-6">
+      <MarqueeComponent />
     </v-row>
   </v-container>
   <section style="margin-bottom: 7rem;">
@@ -78,6 +85,7 @@ import { useApi } from '@/composables/axios'
 import { useSnackbar } from 'vuetify-use-dialog'
 import SplineScene from '@/components/SplineScene.vue'
 import portfolioCard from '@/components/portfolioCard.vue'
+import MarqueeComponent from '@/components/MarqueeComponent.vue'
 
 definePage({
   meta: {
@@ -117,13 +125,6 @@ const loadProducts = async () => {
 }
 onMounted(loadProducts)
 
-// 設置初始圖片
-const currentImage = ref(new URL('../assets/serve1.png', import.meta.url).href)
-
-// 設置更換圖片的函數
-const changeImage = (imageName) => {
-  currentImage.value = new URL(`../assets/${imageName}`, import.meta.url).href
-}
 </script>
 
 <style scoped>
@@ -197,15 +198,9 @@ p {
 .form-container {
   text-align: left;
 }
-.serve{
-  font-weight: bolder;
-  display: flex;
-  color: rgb(255, 255, 255); /* 調整文字顏色為白色 */
-  align-items: center;
-  line-height: 0.8; /* 調整行高 */
-  height: 100%; /* 讓文字佔滿容器的高度 */
-  width: 100%; /* 讓文字佔滿容器的寬度 */
-  font-size: clamp(1rem, 35vw, 385px); /* 字體大小在 2rem 到 70px 之間，根據視窗寬度調整 */
+.text-h2{
+  font-family: 'Jost', sans-serif;
+  font-weight: 900;
 }
 #portfolioTitle{
   color: rgb(0, 0, 0);

@@ -1,26 +1,5 @@
 <template>
-  <v-container class=" ">
-    <v-row>
-      <v-col cols="12">
-        <h1 class="text-center">管理</h1>
-      </v-col>
-      <v-divider></v-divider>
-      <v-col cols="12">
-        <v-data-table
-          :items="items"
-          :headers="headers"
-        >
-          <template #[`item.cart`]="data">
-            <ul>
-              <li v-for="item in data.item.cart" :key="item._id">
-                {{ item.p_id.name }} * {{ item.quantity }}
-              </li>
-            </ul>
-          </template>
-        </v-data-table>
-      </v-col>
-    </v-row>
-  </v-container>
+<div class="bg"></div>
 
 </template>
 
@@ -41,5 +20,11 @@ meta:
   layout: admin
 </route>
 <style scoped>
-
+.bg{
+  background: url('@/assets/NoisyGlass.png') center center fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+}
 </style>

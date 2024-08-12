@@ -104,7 +104,7 @@ import { useSnackbar } from 'vuetify-use-dialog'
 
 definePage({
   meta: {
-    title: '達耀工程有限公司 | 業績管理'
+    title: 'DST| 業績管理'
   }
 })
 

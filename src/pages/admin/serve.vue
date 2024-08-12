@@ -92,7 +92,7 @@ import { useSnackbar } from 'vuetify-use-dialog'
 
 definePage({
   meta: {
-    title: '達耀工程有限公司 | 服務內容管理'
+    title: 'DST| 服務內容管理'
   }
 })
 
