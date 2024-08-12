@@ -31,7 +31,7 @@ import { definePage } from 'vue-router/auto'
 
 definePage({
   meta: {
-    title: '購物網 | 訂單查詢',
+    title: '達耀工程有限公司 | 訂單查詢',
     login: true,
     admin: false
   }

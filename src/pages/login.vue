@@ -1,17 +1,18 @@
 <template>
-  <v-container>
+  <v-main class="gradient-background">
+  <v-container class="logincard ">
     <v-row>
       <v-col cols="12">
-        <h1 class="text-center">登入</h1>
+        <h1 class="gradient-text text-h4 font-weight-bold text-center" style="line-height: 2;">Login</h1>
       </v-col>
-      <v-divider></v-divider>
-      <v-col cols="12">
+      <v-col cols="12" style="padding: 2rem;">
         <v-form :disabled="isSubmitting" @submit.prevent="submit">
           <v-text-field
             label="帳號"
             minlength="4" maxlength="20" counter
             v-model="account.value.value"
             :error-messages="account.errorMessage.value"
+            class="blue-text"
           ></v-text-field>
           <v-text-field
             label="密碼"
@@ -19,14 +20,16 @@
             type="password"
             v-model="password.value.value"
             :error-messages="password.errorMessage.value"
+            class="blue-text"
           ></v-text-field>
           <div class="text-center">
-            <v-btn type="submit" color="green" :loading="isSubmitting">登入</v-btn>
+            <v-btn class="custom-btn" type="submit" color="green" :loading="isSubmitting">登入</v-btn>
           </div>
         </v-form>
       </v-col>
     </v-row>
   </v-container>
+</v-main>
 </template>
 
 <script setup>
@@ -40,7 +43,7 @@ import { useSnackbar } from 'vuetify-use-dialog'
 
 definePage({
   meta: {
-    title: '購物網 | 登入',
+    title: '達耀工程有限公司 | 登入',
     login: false,
     admin: false
   }
@@ -82,7 +85,7 @@ const submit = handleSubmit(async (values) => {
     createSnackbar({
       text: result,
       snackbarProps: {
-        color: 'green'
+        color: 'blue'
       }
     })
     router.push('/')
@@ -96,3 +99,30 @@ const submit = handleSubmit(async (values) => {
   }
 })
 </script>
+<style>
+.gradient-background {
+  background: url('@/assets/Abstract.jpg');
+  height: 100vh; /* 確保背景覆蓋整個視窗高度 */
+}
+.gradient-text {
+  background: linear-gradient(to bottom,rgb(0, 238, 255),blue); /* 漸層顏色 */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.logincard {
+  background: white;
+  max-width: 550px;
+  height: 400px;
+  border-radius: 10px;
+  margin: 5% auto;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+.custom-btn {
+  background: linear-gradient(to bottom,rgb(0, 70, 248),blue); /* 漸層顏色 */
+  color: white !important;
+}
+.blue-text {
+  color: blue !important;
+}
+</style>

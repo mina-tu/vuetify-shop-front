@@ -1,42 +1,48 @@
 <template>
-  <v-container>
+  <v-main class="gradient-background" >
+  <v-container class="registercard">
     <v-row>
       <v-col cols="12">
-        <h1 class="text-center">註冊</h1>
+        <h1 class="gradient-text text-h4 font-weight-bold text-center" style="line-height: 2;">
+          Register</h1>
       </v-col>
-      <v-divider></v-divider>
-      <v-col cols="12">
+      <v-col cols="12" style="padding: 2rem;">
         <v-form @submit.prevent="submit" :disabled="isSubmitting">
           <v-text-field
             label="帳號"
             minlength="4" maxlength="20" counter
             v-model="account.value.value"
             :error-messages="account.errorMessage.value"
+            class="blue-text"
           ></v-text-field>
           <v-text-field
             label="信箱" type="email"
             v-model="email.value.value"
             :error-messages="email.errorMessage.value"
+             class="blue-text"
           ></v-text-field>
           <v-text-field
             label="密碼" type="password"
             minlength="4" maxlength="20" counter
             v-model="password.value.value"
             :error-messages="password.errorMessage.value"
+             class="blue-text"
           ></v-text-field>
           <v-text-field
             label="確認密碼" type="password"
             minlength="4" maxlength="20" counter
             v-model="passwordConfirm.value.value"
             :error-messages="passwordConfirm.errorMessage.value"
+             class="blue-text"
           ></v-text-field>
           <div class="text-center">
-            <v-btn type="submit" color="green" :loading="isSubmitting">註冊</v-btn>
+            <v-btn class="custom-btn" type="submit"  :loading="isSubmitting">註冊</v-btn>
           </div>
         </v-form>
       </v-col>
     </v-row>
   </v-container>
+</v-main>
 </template>
 
 <script setup>
@@ -50,7 +56,7 @@ import { useSnackbar } from 'vuetify-use-dialog'
 
 definePage({
   meta: {
-    title: '購物網 | 註冊'
+    title: '達耀工程有限公司 | 註冊'
   }
 })
 
@@ -125,3 +131,31 @@ const submit = handleSubmit(async (values) => {
   }
 })
 </script>
+
+<style>
+.gradient-background {
+  background: url('@/assets/Abstract.jpg');
+  height: 100vh; /* 確保背景覆蓋整個視窗高度 */
+}
+.gradient-text {
+  background: linear-gradient(to bottom,rgb(0, 238, 255),blue); /* 漸層顏色 */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.registercard{
+  background: white;
+  max-width: 550px;
+  height: 600px;
+  border-radius: 10px;
+  margin: 5% auto;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+.custom-btn {
+ background: linear-gradient(to bottom,rgb(0, 70, 248),blue); /* 漸層顏色 */
+  color: white !important;
+}
+.blue-text {
+  color: blue !important;
+}
+</style>

@@ -1,39 +1,44 @@
 <template>
-  <v-container>
-    <v-col cols="12">
-      <h1 class="text-center">{{ product.name }}</h1>
-    </v-col>
-    <v-col cols="12">
-      <v-img :src="product.image" height="200"></v-img>
-    </v-col>
-    <v-col cols="12">
-      <p>${{ product.price }}</p>
-      <p>{{ product.description }}</p>
-      <v-form :disabled="isSubmitting" @submit.prevent="submit">
-        <v-text-field type="number" v-model.number="quantity.value.value" :error-messages="quantity.errorMessage.value"></v-text-field>
-        <v-btn type="submit" prepend-icon="mdi-cart" :loading="isSubmitting">加入購物車</v-btn>
-      </v-form>
-    </v-col>
+  <v-container fluid style="margin-top: 3rem;">
+    <v-row>
+      <!-- 圖片在左 -->
+      <v-col cols="12" md="6">
+        <v-img :src="product.image" height="100vh" cover></v-img>
+      </v-col>
+      <!-- 文字在右 -->
+      <v-col cols="12" md="6" sm="12" style="border-left: 2px solid blue;" class="right">
+        <v-row>
+          <v-col cols="12">
+            <section class="section" style="margin-top: 5rem;">
+              <div class="time">{{ product.year }}</div>
+              <div class="title mb-5">{{ product.name }}</div>
+              <div class="info">{{ product.description }}</div>
+            </section>
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col cols="12">
+            <section class="section more" style="margin-top: 8vh;">
+              <h3 style="font-size: 20px;margin-bottom: 2rem;">更多案例</h3>
+              <SmallPortfolioCard />
+            </section>
+          </v-col>
+        </v-row>
+      </v-col>
+    </v-row>
   </v-container>
-  <v-overlay class="align-center justify-center text-center" :model-value="!product.sell" persistent>
-    <h1 class="text-center text-red">已下架</h1>
-    <v-btn to="/">回首頁</v-btn>
-  </v-overlay>
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import { definePage } from 'vue-router/auto'
-import { useRoute, useRouter } from 'vue-router'
+import { ref, onMounted } from 'vue'
+import { definePage, useRoute, useRouter, onBeforeRouteUpdate } from 'vue-router/auto'
 import { useApi } from '@/composables/axios'
 import { useSnackbar } from 'vuetify-use-dialog'
-import { useForm, useField } from 'vee-validate'
-import * as yup from 'yup'
-import { useUserStore } from '@/stores/user'
+import SmallPortfolioCard from '@/components/SmallPortfolioCard.vue'
 
 definePage({
   meta: {
-    title: '購物網 | 商品',
+    title: 'DST | 實績案例',
     login: false,
     admin: false
   }
@@ -41,32 +46,24 @@ definePage({
 
 const { api } = useApi()
 const route = useRoute()
-const router = useRouter()
+// const router = useRouter()
 const createSnackbar = useSnackbar()
-const user = useUserStore()
 
 const product = ref({
   _id: '',
   name: '',
-  price: 0,
+  year: 0,
   description: '',
   image: '',
   sell: true,
   category: ''
 })
 
-const load = async () => {
+const load = async (id) => {
   try {
-    const { data } = await api.get('/product/' + route.params.id)
-    product.value._id = data.result._id
-    product.value.name = data.result.name
-    product.value.price = data.result.price
-    product.value.description = data.result.description
-    product.value.image = data.result.image
-    product.value.sell = data.result.sell
-    product.value.category = data.result.category
-
-    document.title = '購物網 | ' + product.value.name
+    const { data } = await api.get('/product/' + id)
+    product.value = data.result
+    document.title = '達耀工程有限公司 | ' + product.value.name
   } catch (error) {
     console.log(error)
     createSnackbar({
@@ -77,30 +74,51 @@ const load = async () => {
     })
   }
 }
-load()
 
-const schema = yup.object({
-  quantity: yup.number().typeError('數量必填').required('數量必填').min(1, '最少為 1')
-})
-const { isSubmitting, handleSubmit } = useForm({
-  validationSchema: schema,
-  initialValues: {
-    quantity: 1
+// 使用 onBeforeRouteUpdate 來處理路由更新
+onBeforeRouteUpdate((to, from) => {
+  // 檢查新舊路由的 id 是否不同
+  if (to.params.id !== from.params.id) {
+    load(to.params.id)
   }
 })
-const quantity = useField('quantity')
 
-const submit = handleSubmit(async (values) => {
-  if (!user.isLogin) {
-    router.push('/login')
-    return
-  }
-  const result = await user.addCart(product.value._id, values.quantity)
-  createSnackbar({
-    text: result.text,
-    snackbarProps: {
-      color: result.color
-    }
-  })
+// 初始加載
+onMounted(() => {
+  load(route.params.id)
 })
 </script>
+
+<style scoped>
+
+.time {
+  font-size: 3rem; /* 調整字體大小以減少空間佔用 */
+  font-weight: bolder;
+}
+.title {
+  font-size: 40px; /* 調整字體大小以減少空間佔用 */
+  font-weight: 900;
+}
+.info {
+  font-size: 20px; /* 調整字體大小以減少空間佔用 */
+  font-weight: bold;
+  background-color: blue;
+  color: white;
+  border-radius: 2rem;
+  padding: 7px;
+  display: inline-block;
+  letter-spacing: 3px; /* 調整字距來減少空間佔用 */
+}
+.right {
+  min-height: calc(100vh - 100px); /* 確保右側內容區域的最小高度 */
+  margin-bottom: 100px; /* 確保內容不會覆蓋 footer */
+}
+
+.section {
+  margin-bottom: 2rem;
+}
+
+.more {
+  margin-top: 8vh;
+}
+</style>

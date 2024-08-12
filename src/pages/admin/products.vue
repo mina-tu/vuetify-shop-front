@@ -1,13 +1,10 @@
 <template>
-     <v-container>
+     <v-container >
        <v-row>
          <v-col cols="12">
-           <h1 class="text-center">商品管理</h1>
+          <v-col cols="12" class="d-flex justify-end">
+           <v-btn  color="black" @click="openDialog(null)">新增業績</v-btn>
          </v-col>
-         <v-col cols="12">
-           <v-btn color="green" @click="openDialog(null)">新增商品</v-btn>
-         </v-col>
-         <v-col cols="12">
            <v-data-table-server
              v-model:items-per-page="tableItemsPerPage"
              v-model:sort-by="tableSortBy"
@@ -29,15 +26,16 @@
                  append-icon="mdi-magnify"
                  @click-append="tableLoadItems(true)"
                  @keydown.enter="tableLoadItems(true)"
+                 class="custom-search"
                ></v-text-field>
              </template>
              <template #[`item.image`]="{ value }">
-               <v-img :src="value" height="50px"></v-img>
+               <v-img :src="value" height="55px"></v-img>
              </template>
              <template #[`item.sell`]="{ value }">
                <v-icon icon="mdi-check" v-if="value"></v-icon>
              </template>
-             <template #[`item.action`]="{ item }">
+             <template #[`item.action`]="{ item }" >
                <v-btn icon="mdi-pencil" variant="text" color="blue" @click="openDialog(item)"></v-btn>
              </template>
            </v-data-table-server>
@@ -47,7 +45,7 @@
      <v-dialog v-model="dialog.open" persistent width="500">
        <v-form @submit.prevent="submit" :disabled="isSubmitting">
          <v-card>
-           <v-card-title>{{ dialog.id ? '編輯商品' : '新增商品' }}</v-card-title>
+           <v-card-title>{{ dialog.id ? '編輯' : '新增' }}</v-card-title>
            <v-card-text>
              <v-text-field
                label="名稱"
@@ -55,10 +53,10 @@
                :error-messages="name.errorMessage.value"
              ></v-text-field>
              <v-text-field
-               label="價格"
+               label="年份"
                type="number" min="0"
-               v-model="price.value.value"
-               :error-messages="price.errorMessage.value"
+               v-model="year.value.value"
+               :error-messages="year.errorMessage.value"
              ></v-text-field>
              <v-select
                label="分類"
@@ -67,7 +65,7 @@
                :error-messages="category.errorMessage.value"
              ></v-select>
              <v-checkbox
-               label="上架"
+               label="新增"
                v-model="sell.value.value"
                :error-messages="sell.errorMessage.value"
              ></v-checkbox>
@@ -106,7 +104,7 @@ import { useSnackbar } from 'vuetify-use-dialog'
 
 definePage({
   meta: {
-    title: '購物網 | 商品管理'
+    title: '達耀工程有限公司 | 案例管理'
   }
 })
 
@@ -126,7 +124,7 @@ const openDialog = (item) => {
   if (item) {
     dialog.value.id = item._id
     name.value.value = item.name
-    price.value.value = item.price
+    year.value.value = item.year
     description.value.value = item.description
     category.value.value = item.category
     sell.value.value = item.sell
@@ -142,23 +140,23 @@ const closeDialog = () => {
   fileAgent.value.deleteFileRecord()
 }
 
-const categories = ['衣服', '手機', '遊戲', '食品']
+const categories = ['原水處理系統規劃設計及施工', '純水及超純水系統規劃設計及施工', '特殊廢水回收系統規劃設計及施工', '製程液純化系統規劃設計及施工', '冷凝水回收系統規劃設計及施工', '冷卻水塔旁濾系統規劃設計及施工', '其他']
 const schema = yup.object({
   name: yup
     .string()
-    .required('商品名稱必填'),
-  price: yup
+    .required('業主名稱必填'),
+  year: yup
     .number()
-    .typeError('商品價格格式錯誤')
-    .required('商品價格必填')
-    .min(0, '商品價格不能小於 0'),
+    .typeError('年份格式錯誤')
+    .required('年份必填')
+    .min(0, '年份不能小於 0'),
   description: yup
     .string()
-    .required('商品說明必填'),
+    .required('說明必填'),
   category: yup
     .string()
-    .required('商品分類必填')
-    .test('isCategory', '商品分類錯誤', value => {
+    .required('分類必填')
+    .test('isCategory', '分類錯誤', value => {
       return categories.includes(value)
     }),
   sell: yup
@@ -168,14 +166,14 @@ const { handleSubmit, isSubmitting, resetForm } = useForm({
   validationSchema: schema,
   initialValues: {
     name: '',
-    price: 0,
+    year: 0,
     description: '',
     category: '',
     sell: true
   }
 })
 const name = useField('name')
-const price = useField('price')
+const year = useField('year')
 const description = useField('description')
 const category = useField('category')
 const sell = useField('sell')
@@ -191,7 +189,7 @@ const submit = handleSubmit(async (values) => {
     const fd = new FormData()
     // fd.append(key, value)
     fd.append('name', values.name)
-    fd.append('price', values.price)
+    fd.append('year', values.year)
     fd.append('description', values.description)
     fd.append('category', values.category)
     fd.append('sell', values.sell)
@@ -233,11 +231,11 @@ const tablePage = ref(1)
 const tableItems = ref([])
 const tableHeaders = [
   { title: '圖片', align: 'center', sortable: false, key: 'image' },
-  { title: '名稱', align: 'center', sortable: true, key: 'name' },
-  { title: '價格', align: 'center', sortable: true, key: 'price' },
+  { title: '業主', align: 'center', sortable: true, key: 'name' },
+  { title: '年份', align: 'center', sortable: true, key: 'year' },
   { title: '分類', align: 'center', sortable: true, key: 'category' },
-  { title: '上架', align: 'center', sortable: true, key: 'sell' },
-  { title: '操作', align: 'center', sortable: false, key: 'action' }
+  { title: '新增', align: 'center', sortable: true, key: 'sell' },
+  { title: '編輯', align: 'center', sortable: false, key: 'action' }
 ]
 const tableLoading = ref(true)
 const tableItemsLength = ref(0)
@@ -275,3 +273,12 @@ tableLoadItems()
    meta:
      layout: admin
    </route>
+<style scoped>
+.v-table {
+  overflow: hidden;
+}
+
+.custom-search {
+  max-width: 300px;
+}
+</style>
