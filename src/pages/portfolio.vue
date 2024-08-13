@@ -1,7 +1,7 @@
 <template>
   <PortfolioSpline />
   <v-main class="backimg">
-  <v-container style="margin-top: 2rem;">
+  <v-container style="margin-top: 1rem;">
     <v-row>
       <v-col cols="12" style="margin-top: 2rem;">
         <div class="text-left"
@@ -11,7 +11,7 @@
           實績案例</div>
       </v-col>
     </v-row>
-    <v-row >
+    <v-row style="margin-bottom: 10rem;">
       <v-col v-for="product in products" :key="product._id" cols="12" sm="6" md="4" lg="3" >
         <ProductCard id="card" v-bind="product" />
       </v-col>

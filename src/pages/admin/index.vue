@@ -1,6 +1,5 @@
 <template>
-<div class="bg"></div>
-
+  <div class="bg"></div>
 </template>
 
 <script setup>
@@ -10,7 +9,8 @@ definePage({
   meta: {
     title: '達耀工程有限公司 | 管理',
     login: true,
-    admin: true
+    admin: true,
+    showNavbar: false // 隱藏導覽列
   }
 })
 </script>
@@ -19,6 +19,7 @@ definePage({
 meta:
   layout: admin
 </route>
+
 <style scoped>
 .bg{
   background: url('@/assets/NoisyGlass.png') center center fixed;

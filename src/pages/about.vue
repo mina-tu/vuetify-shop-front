@@ -1,6 +1,5 @@
 <template>
   <v-main class="backimg">
-    <v-container>
       <!-- 頁首區域 -->
       <v-container>
         <section class="top-section">
@@ -31,58 +30,40 @@
       </v-container>
 
       <!-- 產品介紹區域 -->
-      <v-row>
-        <v-col cols="12" class="text-center">
-          <h2 style="font-size: 40px;color:gray;line-height: 5;">經營項目</h2>
-        </v-col>
-      </v-row>
-      <section class="products-section" data-aos="fade-up">
-        <v-row>
-          <v-col cols="12" md="6">
-            <div class="product-image">
-              <v-img src="@/assets/sven-mieke.jpg" contain height="400"></v-img>
-            </div>
-          </v-col>
-          <v-col cols="12" md="6">
-            <div class="product-info">
-              <h1 class="product-infoh1">主要業務</h1>
-              <p>
-                水處理系統規劃設計及施工<br />
-                原水處理系統規劃設計及施工<br />
-                純水及超純水系統規劃設計及施工<br />
-                特殊廢水回收系統規劃設計及施工<br />
-                製程液純化系統規劃設計及施工<br />
-                冷凝水回收系統規劃設計及施工<br />
-                冷卻水塔旁濾系統規劃設計及施工
-              </p>
-            </div>
-          </v-col>
-        </v-row>
-      </section>
-      <section class="products-section" data-aos="fade-up">
-        <v-row>
-          <v-col cols="12" md="6">
-            <div class="product-image">
-              <v-img src="@/assets/christopher.jpg" contain height="400"></v-img>
-            </div>
-          </v-col>
-          <v-col cols="12" md="6">
-            <div class="product-info">
-              <h1 class="product-infoh1">次要業務</h1>
-              <p>
-                機械安裝<br />
-                配管工程<br />
-                水處理耗材<br />
-                藥劑銷售
-              </p>
-            </div>
-          </v-col>
-        </v-row>
-      </section>
-
+  <v-container fluid class="business-items-container ">
+    <div class="content-wrapper">
+      <h1 class="title">Business items</h1>
+      <div class="main-business">
+        <h2 class="subtitle">主要業務</h2>
+        <ul class="business-list">
+          <li>水處理系統規劃設計及施工</li>
+          <li>原水處理系統規劃設計及施工</li>
+          <li>純水及超純水系統規劃設計及施工</li>
+          <li>特殊廢水回收系統規劃設計及施工</li>
+          <li>製程液純化系統規劃設計及施工</li>
+          <li>冷凝水回收系統規劃設計及施工</li>
+          <li>冷卻水塔旁濾系統規劃設計及施工</li>
+        </ul>
+      </div>
+    </div>
+  </v-container>
+  <MarqueeServe />
+  <v-container fluid class="business-items-container2 ">
+    <div class="main-business2">
+        <h2 class="subtitle">次要業務</h2>
+        <ul class="business-list">
+          <li>機械安裝</li>
+          <li>配管工程</li>
+          <li>水處理耗材</li>
+          <li>藥劑銷售</li>
+        </ul>
+      </div>
+  </v-container>
+  <marqueeText class="marqueelogo"/>
       <!-- 公司概況區域 -->
-      <v-container class="work-container">
+      <v-container  class="work-container">
         <section class="about-section1" data-aos="fade-up">
+          <div class="ball"></div>
           <h2 class="about-sectionh2">業務概述</h2>
           <p>
             達耀工程有限公司，創立於2007年，以「積極、進取、創新、負責」之經營宗旨，服務客戶，提升競爭能力。<br />
@@ -91,6 +72,7 @@
           </p>
         </section>
         <section class="about-section2" data-aos="fade-up">
+          <div class="ball"></div>
           <h2 class="about-sectionh2">未來展望</h2>
           <p>
             世界科技不斷進步，從早期傳統"CCR 逆向再生系統"，研發至最新的水處理之製程"Compack Bed 系統"，我們為此前進的腳步從不停歇，<br />
@@ -99,13 +81,13 @@
           </p>
         </section>
         <section class="about-section3" data-aos="fade-up">
+          <div class="ball"></div>
           <h2 class="about-sectionh2">經營理念</h2>
           <p>
             完美的產品、完善的品質、完整的服務，是我們一直堅持不變的經營理念態度，做到 Total Solution 更是我們對客戶的保證。
           </p>
         </section>
       </v-container>
-    </v-container>
     <aboutFooter class="footer" />
   </v-main>
 </template>
@@ -115,7 +97,9 @@ import { onMounted } from 'vue'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 import { definePage } from 'vue-router/auto'
+import MarqueeServe from '@/components/MarqueeServe .vue'
 import aboutFooter from '@/components/aboutFooter.vue'
+import marqueeText from '@/components/MarqueeText .vue'
 
 definePage({
   meta: {
@@ -157,6 +141,7 @@ onMounted(() => {
   justify-content: left;
   text-align: left;
   background: #ffffff00;
+  margin-top: 10vh;
 }
 
 .top-content {
@@ -240,10 +225,6 @@ onMounted(() => {
     font-size: 16px;
   }
 
-  .about-sectionh2 {
-    font-size: 28px;
-  }
-
   .about-section1,
   .about-section2,
   .about-section3 {
@@ -251,31 +232,103 @@ onMounted(() => {
   }
 }
 
-.product-infoh1 {
-  font-size: 30px;
-  color: blue;
+.business-items-container {
+  background-image: url('@/assets/sven-mieke.jpg');
+  background-size: cover;
+  background-position: center;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  padding: 0%;
+margin-top: 30vh;
 }
 
-.product-info p {
-  font-size: 16px;
+@media (min-width: 1200px) {
+    .Business {
+        max-width: 1900px;
+        padding: 0;
+    }
+}
+.business-items-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.1) 50%, rgba(0,0,255,0.7));
 }
 
-.products-section {
-  margin-top: 50px;
+.content-wrapper {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1400px;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
 }
 
-.product-image {
+.title {
+  font-size: 10rem;
+  font-weight: bold;
+  color: #00ffff;
+  margin-bottom: 40px;
+}
+
+.main-business {
+  padding: 30px;
+  border-radius: 10px;
+  max-width: 500px;
+  align-self: flex-end;
+}
+
+.subtitle {
+  font-size: 3rem;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.business-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.business-list li {
+  color: white;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+.v-main {
+  padding: 0 !important;
+}
+
+.left-content .title {
+  font-size: 15rem;
+  font-weight: bold;
+  color: cyan; /* 根據圖片中的字體顏色設置 */
+}
+
+.right-content {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 255, 0.9)); /* 添加藍色漸變背景 */
   padding: 20px;
+height: 100vh;
+width: 100vw;
 }
 
-.product-info {
-  padding: 20px;
+.text {
+  font-size: 1.2rem;
+  line-height: 1.6;
 }
 
 .about-sectionh2 {
   font-size: 25px;
-  text-align: center;
-  color: rgb(0, 21, 253);
+  text-align: left;
+  color: rgb(0, 0, 0);
   margin-bottom: 2rem;
 }
 
@@ -287,7 +340,35 @@ onMounted(() => {
   border-radius: 20px;
 }
 
+.business-items-container2{
+  background-image: url('@/assets/christopher1.png');
+  background-size: cover;
+  background-position: center;
+  width: 100vw;
+  height: 150vh;
+}
+.main-business2{
+  padding: 30px;
+  max-width: 500px;
+  align-self: flex-end;
+  margin-top: 70vh;
+}
+
 .work-container {
-  padding: 0 8%;
+    margin-bottom: 50vh;
+}
+.ball{
+  width: 40px;
+  height: 40px;
+  background-color: #0800ff;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  margin-left: -2rem;
+}
+.marqueelogo{
+  transform: rotate(90deg);
+  position: relative;
+  left:70vh;
+  top: 0;
 }
 </style>

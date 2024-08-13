@@ -45,7 +45,7 @@ export default {
 
  <style scoped>
 .footer-container {
-   margin-top: 5vh;
+   margin-top: 10vh;
    margin-bottom: 10vh;
 }
 .footer-title {

@@ -43,12 +43,6 @@
           <li>冷凝水回收系統</li>
           <li>冷卻水塔旁濾系統</li>
         </ul>
-        <!-- 藍色色塊 -->
-        <div style="background-color: #0000FF;
-         width: 200px; height: 200px;
-         position: absolute;
-         top: -6rem;
-         right: -28rem;"></div>
       </v-col>
 
       <v-col cols="12" sm="3" style="padding: 2rem; position: relative;">
@@ -58,12 +52,6 @@
           <li>配管工程</li>
           <li>水處理耗材及藥劑銷售</li>
         </ul>
-        <!-- 藍色色塊 -->
-        <div style="background-color: #0000FF;
-        width: 250px; height: 250px;
-        position: absolute;
-        top: -12rem;
-        right: -15rem;"></div>
       </v-col>
     </v-row>
 

@@ -22,6 +22,7 @@
       </v-col>
     </v-row>
   </v-container>
+
 </template>
 
 <script>
@@ -91,5 +92,11 @@ export default {
   .footer-col {
     text-align: left;
   }
+}
+.backimg{
+  background-image: url('../assets/footerback.png') !important;
+  background-size: cover;
+  width: 100%;
+
 }
 </style>
