@@ -2,8 +2,7 @@
   <v-container fluid class="pa-0 marquee-container" @click="goToPortfolio">
     <div class="marquee">
       <span v-for="n in 2" :key="n" class="marquee-content">
-        SERVE &nbsp;&nbsp;&nbsp; SERVE &nbsp;&nbsp;&nbsp; SERVE &nbsp;&nbsp;&nbsp;
-        SERVE &nbsp;&nbsp;&nbsp; SERVE &nbsp;&nbsp;&nbsp; SERVE &nbsp;&nbsp;&nbsp;
+        SERVE &nbsp; SERVE &nbsp; SERVE &nbsp; SERVE &nbsp; SERVE &nbsp; SERVE &nbsp;
       </span>
     </div>
   </v-container>
@@ -15,35 +14,33 @@ import { useRouter } from 'vue-router'
 const router = useRouter()
 
 const goToPortfolio = () => {
-  router.push('/serve')
+  router.push('/services')
 }
 </script>
 
 <style scoped>
 .marquee-container {
   overflow: hidden;
-  background-color: #ffffff;
+  background-color: rgb(255, 255, 255);
   cursor: pointer;
   font-family: 'Jost', sans-serif;
-  font-weight: 900; /* Extra Light */
+  font-weight: 900;
 }
 
 .marquee {
   display: flex;
-  width: 200%;
   overflow: hidden;
+  width: 150%;
+  white-space: nowrap;
 }
 
 .marquee-content {
-  display: flex;
-  width: 100%;
   font-size: 3rem;
   font-weight: bold;
   color: rgb(0, 0, 0);
   text-transform: uppercase;
   padding: 1rem 0;
-  white-space: nowrap;
-  animation: marquee 20s linear infinite;
+  animation: marquee 15s linear infinite;
 }
 
 @keyframes marquee {

@@ -13,15 +13,15 @@
           </div>
         </section>
 
-        <section class="header-section full-screen">
+        <section class="header-section full-screen" >
           <div class="header-content">
             <v-row>
-              <v-col cols="12" md="6">
+              <v-col cols="12" md="6" data-aos="fade-right">
                 <h1>達耀工程有限公司</h1>
               </v-col>
-              <v-col cols="12" md="6">
+              <v-col cols="12" md="6" data-aos="fade-left">
                 <p>
-                  成立於 2007 年，專業於水處理工程規劃設計、製造等，擁有豐富的實績，已完成將近百件專案。實績包括台塑、中油、大連等知名企業。
+                成立於 2007 年，專業於水處理工程規劃設計、製造等，擁有豐富的實績，已完成將近百件專案。實績包括台塑、中油、大連等知名企業。
                 </p>
               </v-col>
             </v-row>
@@ -30,10 +30,10 @@
       </v-container>
 
       <!-- 產品介紹區域 -->
-  <v-container fluid class="business-items-container ">
+  <v-container fluid class="business-items-container " data-aos="zoom-in-up">
     <div class="content-wrapper">
       <h1 class="title">Business items</h1>
-      <div class="main-business">
+      <div class="main-business" data-aos="fade-up">
         <h2 class="subtitle">主要業務</h2>
         <ul class="business-list">
           <li>水處理系統規劃設計及施工</li>
@@ -48,9 +48,9 @@
     </div>
   </v-container>
   <MarqueeServe />
-  <v-container fluid class="business-items-container2 ">
-    <div class="main-business2">
-        <h2 class="subtitle">次要業務</h2>
+  <v-container fluid class="business-items-container2 " data-aos="fade-up">
+    <div class="main-business2" data-aos="fade-up">
+        <h2 class="subtitle" >次要業務</h2>
         <ul class="business-list">
           <li>機械安裝</li>
           <li>配管工程</li>

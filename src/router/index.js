@@ -22,7 +22,7 @@ router.beforeEach(async (to, from, next) => {
     await user.profile()
   }
 
-  if (user.isLogin && ['/register', '/login'].includes(to.path)) {
+  if (user.isLogin && ['/register', '/login', '/contact'].includes(to.path)) {
     next('/')
   } else if (to.meta.login && !user.isLogin) {
     next('/login')

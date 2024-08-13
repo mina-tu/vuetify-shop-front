@@ -1,23 +1,23 @@
 <template>
-  <!-- <PortfolioSpline /> -->
-  <v-main class="backimg">
-  <v-container style="margin-top: 2rem;">
+  <v-main class="backimg" >
+  <v-container style="margin-top: 90vh;">
     <v-row>
       <v-col cols="12" style="margin-top: 2rem;">
         <div class="text-left"
         style="line-height: 2;
         font-size: 40px;
-        font-weight: bolder;">
+        font-weight: bolder;" >
           服務內容</div>
           <p style="font-size: 20px;color: blue;">主要業務為水處理系統規劃設計及施工</p>
       </v-col>
     </v-row>
-    <v-row>
-      <v-col v-for="serve in services" :key="serve._id" cols="12" >
-        <ServeCard id="card" v-bind="serve" />
+    <v-row >
+      <v-col v-for="serve in services" :key="serve._id" cols="12"  >
+        <ServeCard id="card" v-bind="serve"  />
       </v-col>
     </v-row>
   </v-container>
+
 </v-main>
 </template>
 <script setup>
@@ -26,7 +26,6 @@ import { useApi } from '@/composables/axios'
 import { useSnackbar } from 'vuetify-use-dialog'
 import ServeCard from '@/components/serveCard.vue'
 import { definePage } from 'vue-router/auto'
-// import PortfolioSpline from '@/components/PortfolioSpline.vue'
 
 definePage({
   meta: {
@@ -68,8 +67,9 @@ onMounted(loadServices)
 </script>
 <style scoped>
 .backimg{
-  background-image: url('../assets/backimg3.png');
+  background-image: url('../assets/backserve.png');
   background-size: cover;
+  margin-top: 1.1vh;
 }
 #card{
   margin-top: 2rem;

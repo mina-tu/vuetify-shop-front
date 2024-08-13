@@ -50,6 +50,7 @@ definePage({
 
   background: url('@/assets/glasssphere.png');
   background-size: cover;
+  height: 100vh;
   padding: 7vh;
 }
 
