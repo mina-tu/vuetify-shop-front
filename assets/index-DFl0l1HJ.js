@@ -1,1 +1,0 @@
-import{_ as t,o as c,f as s}from"./index-CQRg0i3s.js";import{b as o}from"./route-block-B_A1xBdJ.js";const _={class:"bg"},e={__name:"index",setup(a){return(n,r)=>(c(),s("div",_))}};typeof o=="function"&&o(e);const i=t(e,[["__scopeId","data-v-944bc4ca"]]);export{i as default};
