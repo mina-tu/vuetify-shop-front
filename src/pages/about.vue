@@ -21,7 +21,7 @@
               </v-col>
               <v-col cols="12" md="6" data-aos="fade-left">
                 <p>
-                成立於 2007 年，專業於水處理工程規劃設計、製造等，擁有豐富的實績，已完成將近百件專案。實績包括台塑、中油、大連等知名企業。
+                成立於 2007 年，專業於水處理工程規劃設計、製造等，擁有豐富的實績，已完成將近百件專案。實績包括台塑、中油、大連等知名企業
                 </p>
               </v-col>
             </v-row>
@@ -48,8 +48,8 @@
     </div>
   </v-container>
   <MarqueeServe />
-  <v-container fluid class="business-items-container2 " data-aos="fade-up">
-    <div class="main-business2" data-aos="fade-up">
+  <v-container fluid class="business-items-container2 " data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500" >
+    <div class="main-business2" data-aos="fade-up" data-aos-delay="600">
         <h2 class="subtitle" >次要業務</h2>
         <ul class="business-list">
           <li>機械安裝</li>
@@ -59,7 +59,7 @@
         </ul>
       </div>
   </v-container>
-  <marqueeText class="marqueelogo"/>
+  <marqueeDST class="marqueelogo" />
       <!-- 公司概況區域 -->
       <v-container  class="work-container">
         <section class="about-section1" data-aos="fade-up">
@@ -99,7 +99,7 @@ import 'aos/dist/aos.css'
 import { definePage } from 'vue-router/auto'
 import MarqueeServe from '@/components/MarqueeServe .vue'
 import aboutFooter from '@/components/aboutFooter.vue'
-import marqueeText from '@/components/MarqueeText .vue'
+import marqueeDST from '@/components/MarqueeDST .vue'
 
 definePage({
   meta: {
@@ -256,11 +256,11 @@ margin-top: 30vh;
   content: '';
   position: absolute;
   top: 0;
-  left: 0;
+  left: 55%; /* 將 left 設為 50% 使其靠右 */
   right: 0;
   bottom: 0;
-  width: 100%;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.1) 50%, rgba(0,0,255,0.7));
+  width: 45%; /* 將寬度設為 50% */
+  background: linear-gradient(to bottom, rgba(0,0,0,0.1) 20%, rgba(0,0,255,0.9));
 }
 
 .content-wrapper {
@@ -274,7 +274,7 @@ margin-top: 30vh;
 }
 
 .title {
-  font-size: 10rem;
+  font-size: 12rem;
   font-weight: bold;
   color: #00ffff;
   margin-bottom: 40px;
