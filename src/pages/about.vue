@@ -3,15 +3,10 @@
       <!-- 頁首區域 -->
       <v-container>
         <section class="top-section">
-          <div class="top-content">
-            <h1 class="extra-light">
-              We use innovative <br />
-              technology to <br />
-              sustain water <br />
-              resources.
-            </h1>
-          </div>
-        </section>
+  <div id="demo">
+  <splitText />
+  </div>
+</section>
 
         <section class="header-section full-screen" >
           <div class="header-content">
@@ -30,7 +25,7 @@
       </v-container>
 
       <!-- 產品介紹區域 -->
-  <v-container fluid class="business-items-container " data-aos="zoom-in-up">
+  <v-container fluid class="business-items-container " data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
     <div class="content-wrapper">
       <h1 class="title">Business items</h1>
       <div class="main-business" data-aos="fade-up">
@@ -49,7 +44,7 @@
   </v-container>
   <MarqueeServe />
   <v-container fluid class="business-items-container2 " data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500" >
-    <div class="main-business2" data-aos="fade-up" data-aos-delay="600">
+    <div class="main-business2" data-aos="fade-up" data-aos-delay="500">
         <h2 class="subtitle" >次要業務</h2>
         <ul class="business-list">
           <li>機械安裝</li>
@@ -100,6 +95,10 @@ import { definePage } from 'vue-router/auto'
 import MarqueeServe from '@/components/MarqueeServe .vue'
 import aboutFooter from '@/components/aboutFooter.vue'
 import marqueeDST from '@/components/MarqueeDST .vue'
+import 'animate.css'
+// import gsap from 'gsap'
+// import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import splitText from '@/components/splitText.vue'
 
 definePage({
   meta: {
@@ -115,51 +114,19 @@ onMounted(() => {
 </script>
 
 <style scoped>
+/* 頁首區域 */
 .backimg {
   background-image: url('@/assets/back.png');
   background-size: cover;
   background-position: center;
 }
-
-.header-section {
-  position: relative;
-  height: 60vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+#demo {
+  padding: 50px;
   text-align: center;
-  padding: 16px;
-  width: 100%;
-  margin: 0;
-}
-
-.top-section {
-  position: relative;
-  height: 62vh;
-  display: flex;
-  align-items: center;
-  justify-content: left;
-  text-align: left;
-  background: #ffffff00;
-  margin-top: 10vh;
-}
-
-.top-content {
-  color: rgb(0, 0, 0);
-  max-width: 1200px;
-  font-size: 50px;
-  top: 10vh;
-  padding: 0 2rem;
-}
-
-.extra-light {
-  font-family: 'Jost', sans-serif;
-  font-weight: 200; /* Extra Light */
 }
 
 .header-section {
   position: relative;
-  width: 100%;
   height: 60vh;
   display: flex;
   align-items: center;
@@ -169,7 +136,12 @@ onMounted(() => {
   margin: 0;
   padding: 0;
 }
-
+.top-section{
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
 .header-section::before {
   content: '';
   position: absolute;
@@ -202,6 +174,7 @@ onMounted(() => {
   line-height: 1.6;
 }
 
+/* 響應式設計 */
 @media (max-width: 768px) {
   .header-section {
     height: auto;
@@ -211,27 +184,9 @@ onMounted(() => {
   .header-content {
     padding: 4rem 1rem;
   }
-
-  .top-content {
-    font-size: 2.5rem;
-    padding: 0 1rem;
-  }
-
-  .product-infoh1 {
-    font-size: 24px;
-  }
-
-  .product-info p {
-    font-size: 16px;
-  }
-
-  .about-section1,
-  .about-section2,
-  .about-section3 {
-    padding: 1rem;
-  }
 }
 
+/* 主要業務區域 */
 .business-items-container {
   background-image: url('@/assets/sven-mieke.jpg');
   background-size: cover;
@@ -242,24 +197,18 @@ onMounted(() => {
   align-items: center;
   justify-content: flex-start;
   position: relative;
-  padding: 0%;
-margin-top: 30vh;
+  padding: 0;
+  margin-top: 30vh;
 }
 
-@media (min-width: 1200px) {
-    .Business {
-        max-width: 1900px;
-        padding: 0;
-    }
-}
 .business-items-container::before {
   content: '';
   position: absolute;
   top: 0;
-  left: 55%; /* 將 left 設為 50% 使其靠右 */
+  left: 55%;
   right: 0;
   bottom: 0;
-  width: 45%; /* 將寬度設為 50% */
+  width: 45%;
   background: linear-gradient(to bottom, rgba(0,0,0,0.1) 20%, rgba(0,0,255,0.9));
 }
 
@@ -303,26 +252,10 @@ margin-top: 30vh;
   font-size: 1.2rem;
   margin-bottom: 10px;
 }
-.v-main {
-  padding: 0 !important;
-}
 
-.left-content .title {
-  font-size: 15rem;
-  font-weight: bold;
-  color: cyan; /* 根據圖片中的字體顏色設置 */
-}
-
-.right-content {
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 255, 0.9)); /* 添加藍色漸變背景 */
-  padding: 20px;
-height: 100vh;
-width: 100vw;
-}
-
-.text {
-  font-size: 1.2rem;
-  line-height: 1.6;
+/* 公司概況區域 */
+.work-container {
+  margin-bottom: 50vh;
 }
 
 .about-sectionh2 {
@@ -340,24 +273,7 @@ width: 100vw;
   border-radius: 20px;
 }
 
-.business-items-container2{
-  background-image: url('@/assets/christopher1.png');
-  background-size: cover;
-  background-position: center;
-  width: 100vw;
-  height: 150vh;
-}
-.main-business2{
-  padding: 30px;
-  max-width: 500px;
-  align-self: flex-end;
-  margin-top: 70vh;
-}
-
-.work-container {
-    margin-bottom: 50vh;
-}
-.ball{
+.ball {
   width: 40px;
   height: 40px;
   background-color: #0800ff;
@@ -365,10 +281,32 @@ width: 100vw;
   margin-bottom: 20px;
   margin-left: -2rem;
 }
-.marqueelogo{
+
+.business-items-container2 {
+  background-image: url('@/assets/christopher1.png');
+  background-size: cover;
+  background-position: center;
+  width: 100vw;
+  height: 150vh;
+}
+
+.main-business2 {
+  padding: 30px;
+  max-width: 500px;
+  align-self: flex-end;
+  margin-top: 70vh;
+}
+
+.marqueelogo {
   transform: rotate(90deg);
   position: relative;
-  left:70vh;
+  left: 70vh;
   top: 0;
 }
+
+/* 全局設定 */
+.v-main {
+  padding: 0 !important;
+}
+
 </style>

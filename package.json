@@ -11,6 +11,7 @@
     "@boindil/vue-file-agent-next": "^1.0.5",
     "@mdi/font": "7.0.96",
     "@splinetool/runtime": "^1.9.3",
+    "animate.css": "^4.1.1",
     "aos": "^2.3.4",
     "axios": "^1.7.2",
     "core-js": "^3.34.0",

@@ -85,6 +85,7 @@ definePage({
   letter-spacing: 0.1em; /* 調整字母間距 */
   font-family: "Jost", sans-serif; /* 使用 Jost 字體 */
   line-height: 1.5;
+  margin-top: 5vh;
 }
 .infotext{
   line-height: 2;
