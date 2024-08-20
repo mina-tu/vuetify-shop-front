@@ -5,6 +5,7 @@
       <div class="ball1"></div>
       <div class="ball2"></div>
       <div class="ball3"></div>
+      <div class="ball4"></div>
       <!-- gsap---------------------------------------------------------------- -->
       <v-row>
         <v-col cols="12" style="margin-top: 2rem;">
@@ -88,7 +89,7 @@ onMounted(async () => {
     scrollTrigger: {
       trigger: '.ball1',
       start: 'top 102%', // 調整起始位置
-      end: 'bottom 10%', // 調整結束位置
+      end: 'bottom 40%', // 調整結束位置
       scrub: 1
     },
     duration: 1,
@@ -101,7 +102,7 @@ onMounted(async () => {
     scrollTrigger: {
       trigger: '.ball2',
       start: 'top 102%', // 調整起始位置
-      end: 'bottom 0%', // 調整結束位置
+      end: 'bottom 50%', // 調整結束位置
       scrub: 1
     },
     duration: 1,
@@ -113,14 +114,24 @@ onMounted(async () => {
     scrollTrigger: {
       trigger: '.ball2',
       start: 'top 90%', // 調整起始位置
-      end: 'bottom -50%', // 調整結束位置
+      end: 'bottom -30%', // 調整結束位置
       scrub: 1
     },
     duration: 1.5,
     y: '-80vh', // 垂直由下往上移動
     ease: 'power1.out'
   })
-
+  gsap.to('.ball4', {
+    scrollTrigger: {
+      trigger: '.ball1',
+      start: 'top 90%', // 調整起始位置
+      end: 'bottom 40%', // 調整結束位置
+      scrub: 1
+    },
+    duration: 1,
+    y: '-85vh', // 垂直由下往上移動
+    ease: 'linear'
+  })
   // 初始化 AOS 動畫
   AOS.init()
 })
@@ -160,7 +171,7 @@ onMounted(async () => {
   background-position: center;
   border-radius: 50%;
   position: relative;
-  top:50vh;
+  top:7vh;
   left: -10vw;
 }
 .ball3 {
@@ -173,5 +184,14 @@ onMounted(async () => {
   position: relative;
   left: 65vw;
 }
-
+.ball4 {
+  width: 70px;
+  height: 70px;
+  background-image: url('@/assets/sliverball.png');
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+  position: relative;
+  left: 45vw;
+}
 </style>

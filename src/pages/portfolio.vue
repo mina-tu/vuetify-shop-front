@@ -1,7 +1,7 @@
 <template>
   <PortfolioSpline />
   <v-main class="backimg">
-  <v-container style="margin-top: 1rem;">
+  <v-container >
     <v-row>
       <v-col cols="12" style="margin-top: 2rem;">
         <div class="text-left"
@@ -72,11 +72,11 @@ onMounted(loadProducts)
 }
 #card{
   margin-top: 2rem;
-  padding: 1rem;
+  padding: 7px;
   background-color: rgba(255, 255, 255, 0.5); /* 半透明白色背景 */
   backdrop-filter: blur(10px); /* 毛玻璃效果 */
   -webkit-backdrop-filter: blur(10px); /* 兼容 Safari */
-  border-radius: 10px; /* 圓角 */
+  border-radius: 7px; /* 圓角 */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 陰影效果 */
 }
 
