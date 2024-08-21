@@ -1,5 +1,6 @@
 <template>
   <SplineScene />
+  <!-- <ScrollingText /> -->
 
   <v-container>
     <!-- 公司介紹 -->
@@ -74,6 +75,7 @@ import { useSnackbar } from 'vuetify-use-dialog'
 import SplineScene from '@/components/SplineScene.vue'
 import portfolioCard from '@/components/portfolioCard.vue'
 import MarqueeComponent from '@/components/MarqueeComponent.vue'
+// import ScrollingText from '@/components/ScrollingText.vue'
 
 definePage({
   meta: {
