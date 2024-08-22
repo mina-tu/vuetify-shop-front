@@ -34,6 +34,7 @@ const router = useRouter()
 const navItems = [
   { to: '/admin/products', text: '業績管理' },
   { to: '/admin/serve', text: '服務內容管理' },
+  { to: '/admin/contact', text: '表單管理' },
   { to: '/', text: '回首頁' }
 ]
 

@@ -12,14 +12,14 @@
           </div>
         </v-col>
         <v-col cols="12" md="6" class="container-background">
-          <v-form>
-            <v-text-field label="公司名稱" required></v-text-field>
-            <v-text-field label="公司統編" required></v-text-field>
-            <v-text-field label="聯絡人姓名" required></v-text-field>
-            <v-text-field label="聯絡人電話" required></v-text-field>
-            <v-textarea label="詢問內容" required></v-textarea>
+          <v-form @submit.prevent="submitForm">
+            <v-text-field v-model="formData.companyName" label="公司名稱" required></v-text-field>
+            <v-text-field v-model="formData.companyId" label="公司統編" required></v-text-field>
+            <v-text-field v-model="formData.contactName" label="聯絡人姓名" required></v-text-field>
+            <v-text-field v-model="formData.contactPhone" label="聯絡人電話" required></v-text-field>
+            <v-textarea v-model="formData.message" label="詢問內容" required></v-textarea>
             <div class="button-container">
-              <button class="btn">送出</button>
+              <button class="btn" type="submit">送出</button>
             </div>
           </v-form>
         </v-col>
@@ -36,6 +36,9 @@
 
 <script setup>
 import { definePage } from 'vue-router/auto'
+import { ref } from 'vue'
+import { useApi } from '@/composables/axios'
+
 definePage({
   meta: {
     title: '聯絡我們',
@@ -43,6 +46,32 @@ definePage({
     admin: false
   }
 })
+
+const formData = ref({
+  companyName: '',
+  companyId: '',
+  contactName: '',
+  contactPhone: '',
+  message: ''
+})
+const { api } = useApi()
+const submitForm = async () => {
+  try {
+    await api.post('/contactMessage/contactMessage', formData.value)
+    alert('表單提交成功！')
+    // 可以清空表單或進行其他操作
+    formData.value = {
+      companyName: '',
+      companyId: '',
+      contactName: '',
+      contactPhone: '',
+      message: ''
+    }
+  } catch (error) {
+    alert('表單提交失敗，請稍後再試。')
+    console.error(error)
+  }
+}
 </script>
 
 <style scoped>
