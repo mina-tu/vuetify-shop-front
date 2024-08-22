@@ -124,7 +124,7 @@ onMounted(async () => {
   gsap.to('.ball4', {
     scrollTrigger: {
       trigger: '.ball1',
-      start: 'top 90%', // 調整起始位置
+      start: 'top 80%', // 調整起始位置
       end: 'bottom 40%', // 調整結束位置
       scrub: 1
     },
