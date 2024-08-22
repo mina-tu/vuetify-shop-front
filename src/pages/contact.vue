@@ -113,6 +113,7 @@ const submitForm = async () => {
   font-size: clamp(4rem, 5vw, 70px); /* 字體大小在 2rem 到 70px 之間，根據視窗寬度調整 */
   letter-spacing: 0.1em; /* 調整字母間距 */
   font-family: "Jost", sans-serif; /* 使用 Jost 字體 */
+  font-weight: 200;
   line-height: 1.5;
   margin-top: 5vh;
 }
